@@ -10,34 +10,40 @@
 </head>
 
 <body>
-    <h1>Data Link</h1>
-    <a href="/link/create">Insert data</a>
-    <table>
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th></th>
-        </tr>
-        @foreach ($data as $d)
-            <tr>
-                <td>{{ $d['id'] }}</td>
-                <td>{{ $d['name'] }}</td>
-                <td>{{ $d['category'] }}</td>
-                <td>
-                    <a href="{{ route("link.show", $d->id) }}">Show</a>
-                    <span>|</span>
-                    <a href="{{ route("link.edit", $d->id) }}">Edit</a>
-                    <span>|</span>
-                    <form action="{{ route('link.destroy', $d->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+    <div class="flex justify-center">
+        <div class="bg-gray-100 p-8 mt-4 rounded-lg">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-xl font-semibold">Data Link</h1>
+                <a href="/link/create" class="bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">Insert data</a>
+            </div>
+            <table>
+                <tr class="border-b-2 border-gray-200">
+                    <th class="p-4 text-start">No</th>
+                    <th class="p-4 text-start">Name</th>
+                    <th class="p-4 text-start">Category</th>
+                    <th class="p-4"></th>
+                </tr>
+                @foreach ($data as $d)
+                    <tr>
+                        <td class="p-4">{{ $d['id'] }}</td>
+                        <td class="p-4">{{ $d['name'] }}</td>
+                        <td class="p-4">{{ $d['category'] }}</td>
+                        <td class="p-4">
+                            <a href="{{ route('link.show', $d->id) }}" class="text-yellow-500">Show</a>
+                            <span>|</span>
+                            <a href="{{ route('link.edit', $d->id) }}" class="text-blue-500">Edit</a>
+                            <span>|</span>
+                            <form action="{{ route('link.destroy', $d->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
